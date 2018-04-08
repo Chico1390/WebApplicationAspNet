@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "APIView";
+}
+
+<h2>APIView</h2>
+
+<div id="total" style="border: double">
+    0    
+</div>
+
+<Button onclick="chamarApi(1,10)">Produto 1-10$</Button>
+<Button onclick="chamarApi(2,20)">Produto 2-20$</Button>
+<Button onclick="chamarApi(3,30)">Produto 3-30$</Button>
+
+<script>
+    function chamarApi(id, valor) {
+        $.post("/api/values", { id: id, valor: valor })
+            .done(
+            function (data) {
+                $("#total").html(data);
+            });
+    }
+</script>
